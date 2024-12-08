@@ -29,3 +29,21 @@ Before running the application, ensure you have the following installed:
 
 - [Node.js](https://nodejs.org/en/) (version 18 or above)
 - [MongoDB](https://www.mongodb.com/) (running locally or via Atlas)
+
+## Running the Application
+
+1. **Start the backend**:
+   - Navigate to the `backend` folder and run the following command:
+   
+     ```bash
+     nodemon server.js
+     ```
+
+2. **Start the frontend**:
+   - Navigate to the `frontend` folder and run the following command:
+   
+     ```bash
+     ng s
+     ```
+
+Once both the backend and frontend are running, you can access the application in your browser.
