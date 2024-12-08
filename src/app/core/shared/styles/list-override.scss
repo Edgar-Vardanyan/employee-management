@@ -1,0 +1,9 @@
+@mixin List {
+    :root {
+        @include mat.list-overrides((
+          list-item-hover-state-layer-color: transparent,
+          list-item-focus-state-layer-color: transparent,
+          active-indicator-shape: 0px
+        ));
+      }
+}

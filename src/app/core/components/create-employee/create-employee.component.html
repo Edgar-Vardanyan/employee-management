@@ -1,1 +1,144 @@
-<p>create-employee works!</p>
+<div class="container mx-auto p-4">
+    <h2 class="text-xl font-bold mb-4 text-left">{{isEditMode ? 'Edit Employee' : 'Create Employee'}}</h2>
+
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="space-y-4 bg-white p-6 rounded-lg shadow-lg">
+        <!-- First Name -->
+        <div>
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="firstName" required />
+                <mat-error *ngIf="employeeForm.get('firstName')?.hasError('required')">
+                    First Name is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <!-- Last Name -->
+        <div>
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="lastName" required />
+                <mat-error *ngIf="employeeForm.get('lastName')?.hasError('required')">
+                    Last Name is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <!-- Address -->
+        <div>
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Address 1</mat-label>
+                <input matInput formControlName="address1" required />
+                <mat-error *ngIf="employeeForm.get('address1')?.hasError('required')">
+                    Address 1 is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Address 2</mat-label>
+                <input matInput formControlName="address2" />
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>City</mat-label>
+                <input matInput formControlName="city" required />
+                <mat-error *ngIf="employeeForm.get('city')?.hasError('required')">
+                    City is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Postal</mat-label>
+                <input matInput formControlName="postal" required />
+                <mat-error *ngIf="employeeForm.get('postal')?.hasError('required')">
+                    Postal is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Country</mat-label>
+                <input matInput formControlName="country" required />
+                <mat-error *ngIf="employeeForm.get('country')?.hasError('required')">
+                    Country is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <!-- Email -->
+        <div>
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email" required />
+                <mat-error *ngIf="employeeForm.get('email')?.hasError('required')">
+                    Email is required
+                </mat-error>
+                <mat-error *ngIf="employeeForm.get('email')?.hasError('email')">
+                    Please enter a valid email
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <!-- Mobile -->
+        <div>
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Mobile</mat-label>
+                <input matInput type="tel" formControlName="mobile" required />
+                <mat-error *ngIf="employeeForm.get('mobile')?.hasError('required')">
+                    Mobile is required
+                </mat-error>
+                <mat-error *ngIf="employeeForm.get('mobile')?.hasError('pattern')">
+                    Please enter a valid mobile number
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <!-- Date of Birth -->
+        <div>
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Date of Birth</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="dob" required />
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="employeeForm.get('dob')?.hasError('required')">
+                    Date of Birth is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <!-- Gender Toggle -->
+        <div class="flex items-center space-x-4">
+            <mat-button-toggle-group formControlName="gender" name="fontStyle" aria-label="Font Style">
+                <mat-button-toggle value="male">Male</mat-button-toggle>
+                <mat-button-toggle value="female">Female</mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+
+        <!-- Active Checkbox -->
+        <div class="flex items-center">
+            <mat-radio-group formControlName="active" aria-label="Select an option">
+                <mat-radio-button [value]="true">Active</mat-radio-button>
+                <mat-radio-button [value]="false">Inactive</mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <!-- Submit Buttons -->
+        <div class="flex justify-between items-center mt-4">
+            <button type="button" (click)="onCancel()"
+                class="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+                Cancel
+            </button>
+            <button type="submit"
+                class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                Save
+            </button>
+        </div>
+    </form>
+</div>

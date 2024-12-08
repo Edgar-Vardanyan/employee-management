@@ -1,1 +1,134 @@
-<p>view-employee works!</p>
+<div class="p-4">
+  <h1 class="text-xl font-bold mb-4">View Employees</h1>
+
+  <!-- Toggle View Buttons -->
+  <div class="flex justify-end mb-4">
+    <button mat-raised-button (click)="viewMode = 'table'" class="mr-2">
+      Table View
+    </button>
+    <button mat-raised-button (click)="viewMode = 'grid'">
+      Grid View
+    </button>
+  </div>
+
+  <!-- Table View -->
+  @if(viewMode === 'table') {
+
+  <div class="overflow-auto">
+    <table mat-table [dataSource]="employees" class="mat-elevation-z8 w-full">
+      <!-- First Name Column -->
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef> First Name </th>
+        <td mat-cell *matCellDef="let employee"> {{ employee.firstName }} </td>
+      </ng-container>
+
+      <!-- Last Name Column -->
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef> Last Name </th>
+        <td mat-cell *matCellDef="let employee"> {{ employee.lastName }} </td>
+      </ng-container>
+
+      <!-- DOB Column -->
+      <ng-container matColumnDef="dob">
+        <th mat-header-cell *matHeaderCellDef> Date of Birth </th>
+        <td mat-cell *matCellDef="let employee"> {{ employee.dob | date }} </td>
+      </ng-container>
+
+      <!-- Gender Column -->
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef> Gender </th>
+        <td mat-cell *matCellDef="let employee"> {{ employee.gender }} </td>
+      </ng-container>
+
+      <!-- Address1 Column -->
+      <ng-container matColumnDef="address1">
+        <th mat-header-cell *matHeaderCellDef> Address 1 </th>
+        <td mat-cell *matCellDef="let employee"> {{ employee.address1 }} </td>
+      </ng-container>
+
+      <!-- Address2 Column -->
+      <ng-container matColumnDef="address2">
+        <th mat-header-cell *matHeaderCellDef> Address 2 </th>
+        <td mat-cell *matCellDef="let employee"> {{ employee.address2 }} </td>
+      </ng-container>
+
+      <!-- City Column -->
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef> City </th>
+        <td mat-cell *matCellDef="let employee"> {{ employee.city }} </td>
+      </ng-container>
+
+      <!-- Postal Column -->
+      <ng-container matColumnDef="postal">
+        <th mat-header-cell *matHeaderCellDef> Postal Code </th>
+        <td mat-cell *matCellDef="let employee"> {{ employee.postal }} </td>
+      </ng-container>
+
+      <!-- Country Column -->
+      <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef> Country </th>
+        <td mat-cell *matCellDef="let employee"> {{ employee.country }} </td>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let employee"> {{ employee.email }} </td>
+      </ng-container>
+
+      <!-- Mobile Column -->
+      <ng-container matColumnDef="mobile">
+        <th mat-header-cell *matHeaderCellDef> Mobile </th>
+        <td mat-cell *matCellDef="let employee"> {{ employee.mobile }} </td>
+      </ng-container>
+
+      <!-- Active Column -->
+      <ng-container matColumnDef="active">
+        <th mat-header-cell *matHeaderCellDef> Active </th>
+        <td mat-cell *matCellDef="let employee">
+          {{ employee.active ? 'Yes' : 'No' }}
+        </td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let employee">
+          <button class="hover:text-red z-10" mat-button color="warn"
+            (click)="$event.stopPropagation(); deleteEmployee(employee)">Delete</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openEditDialog(row)"
+        class="hover:bg-slate-300 cursor-pointer"></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell text-center" colspan="13">No Employees</td>
+      </tr>
+    </table>
+  </div>
+  }
+
+  <!-- Grid View -->
+  @if(viewMode === 'grid') {
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    @for(employee of employees; track employee._id) {
+
+    <div class="border rounded-lg p-4 shadow hover:shadow-md cursor-pointer" (click)="openEditDialog(employee)">
+      <h2 class="font-bold text-lg">{{ employee.firstName }} {{ employee.lastName }}</h2>
+      <p><strong>Email:</strong> {{ employee.email }}</p>
+      <p><strong>Mobile:</strong> {{ employee.mobile }}</p>
+      <p><strong>Active:</strong> {{ employee.active ? 'Yes' : 'No' }}</p>
+      <p><strong>Gender:</strong> {{ employee.gender }}</p>
+      <button mat-raised-button color="warn" class="mt-2" (click)="$event.stopPropagation(); deleteEmployee(employee)">
+        Delete
+      </button>
+    </div>
+    }
+
+  </div>
+  }
+
+</div>

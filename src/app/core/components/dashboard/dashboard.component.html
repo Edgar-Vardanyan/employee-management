@@ -1,1 +1,50 @@
-<p>dashboard works!</p>
+<div class="container mx-auto px-4 py-8">
+  <h2 class="text-xl font-bold mb-4 text-left">Dashboard</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Total Employees -->
+      <div class="bg-white p-6 rounded-lg shadow-lg flex items-center justify-between">
+        <div class="text-gray-700">
+          <h2 class="text-xl font-semibold">Total Employees</h2>
+          <p class="text-3xl font-bold">{{ employeesCountInformation?.totalEmployees }}</p>
+        </div>
+        <div class="bg-blue-500 text-white p-4 rounded-full flex items-center justify-center">
+          <mat-icon>group</mat-icon>
+        </div>
+      </div>
+  
+      <!-- Total Active Employees -->
+      <div class="bg-white p-6 rounded-lg shadow-lg flex items-center justify-between">
+        <div class="text-gray-700">
+          <h2 class="text-xl font-semibold">Total Active Employees</h2>
+          <p class="text-3xl font-bold">{{ employeesCountInformation?.totalActiveEmployees }}</p>
+        </div>
+        <div class="bg-green-500 text-white p-4 rounded-full flex items-center justify-center">
+          <mat-icon>check_circle</mat-icon>
+        </div>
+      </div>
+  
+      <!-- Total Male Employees -->
+      <div class="bg-white p-6 rounded-lg shadow-lg flex items-center justify-between">
+        <div class="text-gray-700">
+          <h2 class="text-xl font-semibold">Total Male Employees</h2>
+          <p class="text-3xl font-bold">{{ employeesCountInformation?.totalMaleEmployees }}</p>
+        </div>
+        <div class="bg-blue-400 text-white p-4 rounded-full flex items-center justify-center">
+          <mat-icon>male</mat-icon>
+        </div>
+      </div>
+  
+      <!-- Total Female Employees -->
+      <div class="bg-white p-6 rounded-lg shadow-lg flex items-center justify-between">
+        <div class="text-gray-700">
+          <h2 class="text-xl font-semibold">Total Female Employees</h2>
+          <p class="text-3xl font-bold">{{ employeesCountInformation?.totalFemaleEmployees }}</p>
+        </div>
+        <div class="bg-pink-500 text-white p-4 rounded-full flex items-center justify-center">
+          <mat-icon>female</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+  

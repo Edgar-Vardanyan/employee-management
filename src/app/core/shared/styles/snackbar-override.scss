@@ -1,0 +1,13 @@
+@mixin SnackbarMixin {
+    .snackbar-success {
+        @include mat.snack-bar-overrides((container-color: #4caf50,
+                supporting-text-color: white,
+                supporting-text-weight: 700));
+    }
+    
+    .snackbar-error {
+        @include mat.snack-bar-overrides((container-color: #f44336,
+                supporting-text-color: white,
+                supporting-text-weight: 700));
+    }
+}

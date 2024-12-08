@@ -1,0 +1,8 @@
+@mixin Sidenav {
+    :root {
+        @include mat.sidenav-overrides((
+            container-divider-color: black,
+            container-shape: 0px
+        ));
+      }
+}

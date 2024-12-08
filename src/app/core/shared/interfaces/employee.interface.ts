@@ -1,0 +1,15 @@
+export interface Employee {
+    _id?: string,
+    firstName: string,
+    lastName: string,
+    dob: Date,
+    gender: string,
+    address1: string,
+    address2: string,
+    city: string,
+    postal: string,
+    country: string,
+    email: string,
+    mobile: string,
+    active: boolean,
+}

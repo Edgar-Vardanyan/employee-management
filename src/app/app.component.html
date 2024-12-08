@@ -1,1 +1,27 @@
-<router-outlet></router-outlet>
+<mat-sidenav-container class="flex h-full" [autosize]="true">
+    <mat-sidenav #sidenav [mode]="isMobile ? 'over' : 'side'" [opened]="sidenav.opened" [class.!w-full]="isMobile">
+        <mat-nav-list class="relative !pt-14">
+            <a mat-list-item routerLink="/dashboard" routerLinkActive="active" (click)="sidenav.close()">Dashboard</a>
+            <a mat-list-item routerLink="/create-employee" routerLinkActive="active" (click)="sidenav.close()">Create
+                Employee</a>
+            <a mat-list-item routerLink="/view-employee" routerLinkActive="active" (click)="sidenav.close()">View
+                Employees</a>
+            @if(isMobile) {
+            <button class="!absolute right-1 top-1" mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>close</mat-icon>
+            </button>
+            }
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <mat-toolbar color="primary" class="flex justify-between items-center p-4">
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </mat-toolbar>
+
+        <!-- Routed Content -->
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
